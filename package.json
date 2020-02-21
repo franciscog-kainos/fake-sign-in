@@ -1,0 +1,30 @@
+{
+  "name": "lfp-fake-signin",
+  "version": "1.0.0",
+  "description": "A fake signin service for testing.",
+  "main": "index.ts",
+  "scripts": {
+    "start": "ts-node index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Francisco Goinhas",
+  "license": "MIT",
+  "dependencies": {
+    "cookie-parser": "^1.4.4",
+    "crypto": "^1.0.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "msgpack5": "^4.2.1",
+    "nunjucks": "^3.2.0",
+    "redis": "^3.0.2"
+  },
+  "devDependencies": {
+    "@types/cookie-parser": "^1.4.2",
+    "@types/express": "^4.17.2",
+    "@types/msgpack5": "^3.4.1",
+    "@types/nunjucks": "^3.1.3",
+    "@types/redis": "^2.8.15",
+    "ts-lint": "^4.5.1",
+    "typescript": "^3.7.5"
+  }
+}
