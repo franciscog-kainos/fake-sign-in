@@ -30,6 +30,7 @@ export const getExpressAppConfig = (directory: string) => (app: Application): vo
 
   app.use(ROOT_URI, express.static(path.join(directory, 'public/html')));
   app.use(ROOT_URI, express.static(path.join(directory, 'public/html/**/*')));
+  app.use(ROOT_URI, express.static(path.join(directory, 'public/styles/css')));
 
   app.use(ROOT_URI, express.static(path.join(directory, 'public/govuk')));
   app.use(ROOT_URI, express.static(path.join(directory, 'public/govuk/assets')));

@@ -1,6 +1,12 @@
 <meta name="description" content="Use the GOV.UK Prototype Kit to quickly make realistic HTML prototypes of GOV.UK services.">
+{% block head %}
+  <!--[if !IE 8]><!-->
+  <link href="application.css" rel="stylesheet"/>
+  <!--<![endif]-->
 
-<!--[if lte IE 8]><link href="/public/stylesheets/application-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
-<!--[if gt IE 8]><!--><link href="/public/stylesheets/application.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
-<!--[if lte IE 8]><link href="/public/stylesheets/docs-ie8.css" rel="stylesheet" type="text/css" /><![endif]-->
-<!--[if gt IE 8]><!--><link href="/public/stylesheets/docs.css" media="all" rel="stylesheet" type="text/css" /><!--<![endif]-->
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js"
+          integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+          crossorigin="anonymous"></script>
+
+  {% block download %}{% endblock %}
+{% endblock %}
