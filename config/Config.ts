@@ -11,16 +11,18 @@ import * as dotenv from 'dotenv';
 export const config = () => {
   dotenv.config();
   return {
-    COOKIE_SECRET: loadEnvVariableOrFail('COOKIE_SECRET'),
-    COOKIE_NAME: loadEnvVariableOrFail('COOKIE_NAME'),
-    CACHE_SERVER: loadEnvVariableOrFail('CACHE_SERVER'),
-    CACHE_DB: Number(loadEnvVariableOrFail('CACHE_DB')),
-    CACHE_PASSWORD: loadEnvVariableOrFail('CACHE_PASSWORD', ''),
-    REDIRECT_HOST: loadEnvVariableOrFail('REDIRECT_HOST')
+    COOKIE_SECRET: loadEnvVariable('COOKIE_SECRET'),
+    COOKIE_NAME: loadEnvVariable('COOKIE_NAME'),
+    CACHE_SERVER: loadEnvVariable('CACHE_SERVER'),
+    CACHE_DB: Number(loadEnvVariable('CACHE_DB')),
+    CACHE_PASSWORD: loadEnvVariable('CACHE_PASSWORD', ''),
+    REDIRECT_HOST: loadEnvVariable('REDIRECT_HOST'),
+    SESSION_EXPIRATION_TIME: Number(loadEnvVariable('SESSION_EXPIRATION_TIME', '15'))
+
   };
 };
 
-function loadEnvVariableOrFail(name: string, defaultVal?: string): string {
+function loadEnvVariable(name: string, defaultVal?: string): string {
   const envVar = process.env[name];
 
   if (!envVar) {

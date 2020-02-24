@@ -44,6 +44,7 @@ export class Server {
 
             this.redis.set(id, Encoding.encode<ISession>(newDummySession));
             res.cookie(config().COOKIE_NAME, cookie);
+            console.log('Redirecting to: ' + `${config().REDIRECT_HOST}${this.redirectUrl}`)
             return res.redirect(`http://${config().REDIRECT_HOST}${this.redirectUrl}`);
         };
 

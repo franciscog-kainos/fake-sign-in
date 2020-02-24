@@ -8,7 +8,7 @@ Create `.env` file and set:
 - `CACHE_DB`
 - `CACHE_PASSWORD`
 - `REDIRECT_HOST` - URL of the application to redirect to after sign-in in thist format: `host:port`
-
+- `SESSION_EXPIRATION_TIME` - Time in seconds until session expires (optional, default value set to 3600).
 
 # To run:
 
