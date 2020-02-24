@@ -6,21 +6,28 @@ import * as express from 'express';
 import * as nunjucks from 'nunjucks';
 
 import { Application } from 'express';
-import * as dotenv from 'dotenv'
+import * as dotenv from 'dotenv';
 
 export const config = () => {
   dotenv.config();
-  return  {
-    COOKIE_SECRET: loadEnvVariable('COOKIE_SECRET'),
-    COOKIE_NAME: loadEnvVariable('COOKIE_NAME'),
-  }
+  return {
+    COOKIE_SECRET: loadEnvVariableOrFail('COOKIE_SECRET'),
+    COOKIE_NAME: loadEnvVariableOrFail('COOKIE_NAME'),
+    CACHE_SERVER: loadEnvVariableOrFail('CACHE_SERVER'),
+    CACHE_DB: Number(loadEnvVariableOrFail('CACHE_DB')),
+    CACHE_PASSWORD: loadEnvVariableOrFail('CACHE_PASSWORD', ''),
+    REDIRECT_HOST: loadEnvVariableOrFail('REDIRECT_HOST')
+  };
 };
 
-function loadEnvVariable(name: string): string {
+function loadEnvVariableOrFail(name: string, defaultVal?: string): string {
   const envVar = process.env[name];
 
   if (!envVar) {
-    throw Error(`${envVar} not set.`);
+    if (defaultVal !== undefined) {
+      return defaultVal;
+    } else
+    throw Error(`${name} not set.`);
   }
   return envVar;
 }

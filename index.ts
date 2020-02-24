@@ -18,12 +18,13 @@ export class Server {
         this.app.get('/signin', this.signInPage());
         this.app.post('/signin', this.signInPost());
 
-
-        this.redis = new RedisClient({
-            host: 'localhost',
-            db: 0,
-            port: 6379
-        });
+        this.redis = new RedisClient(
+            {
+                host: config().CACHE_SERVER,
+                password: config().CACHE_PASSWORD,
+                db: config().CACHE_DB
+            }
+        );
     }
 
     public start(): void {
@@ -43,8 +44,7 @@ export class Server {
 
             this.redis.set(id, Encoding.encode<ISession>(newDummySession));
             res.cookie(config().COOKIE_NAME, cookie);
-            console.log(this.redirectUrl);
-            return res.redirect(`http://${req.hostname}:3000${this.redirectUrl}`);
+            return res.redirect(`http://${config().REDIRECT_HOST}${this.redirectUrl}`);
         };
 
     private signInPage = (): RequestHandler =>
