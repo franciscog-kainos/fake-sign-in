@@ -50,7 +50,7 @@ export class Server {
 
     private signInPage = (): RequestHandler =>
         (req: Request, res: Response, next: NextFunction) => {
-            this.redirectUrl = req.query.returnTo;
+            this.redirectUrl = req.query.return_to;
             return res.render('chs-signin');
         };
 }
