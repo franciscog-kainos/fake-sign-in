@@ -1,4 +1,4 @@
-import * as express from 'express';
+import express from 'express';
 import { Application, RequestHandler, Request, Response, NextFunction } from 'express';
 import { RedisClient } from 'redis';
 import { Encoding } from './utils/Encoding';
@@ -42,7 +42,7 @@ export class Server {
             const sig = newDummySession[Keys.ClientSig];
             const cookie = id + sig;
 
-            this.redis.set(id, Encoding.encode<ISession>(newDummySession));
+            this.redis.set(id, Encoding.encode(newDummySession));
             res.cookie(config().COOKIE_NAME, cookie);
             console.log('Redirecting to: ' + `${config().REDIRECT_HOST}${this.redirectUrl}`)
             return res.redirect(`http://${config().REDIRECT_HOST}${this.redirectUrl}`);

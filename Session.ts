@@ -33,7 +33,7 @@ export function createNewSession(sessionSecret: string, email: string, password:
         [Keys.Hijacked]: null,
         [Keys.OAuth2Nonce]: generateRandomBytesBase64(64),
         [Keys.ZXSKey]: generateRandomBytesBase64(64),
-        [Keys.Expires]: Date.now() + config().SESSION_EXPIRATION_TIME * 1000,
+        [Keys.Expires]: Number(Date.now().toPrecision(10)) / 1000 + config().SESSION_EXPIRATION_TIME,
         [Keys.LastAccess]: Date.now(),
         [Keys.Pst]: 'all',
         [Keys.SignInInfo]: signInInfo

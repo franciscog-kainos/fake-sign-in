@@ -1,6 +1,5 @@
-import * as msgpack5 from 'msgpack5';
+import msgpack5 from 'msgpack5';
 import * as crypto from 'crypto';
-import { promisify } from 'util';
 
 export enum EncondingConstant {
     _idOctets = (7 * 3),
@@ -9,31 +8,21 @@ export enum EncondingConstant {
     _cookieValueLength = _signatureStart + _signatureLength
 
 }
+
 export class Encoding {
 
-    public static encode = <T>(value: T): string => {
-        if (!value) {
+    public static encode = (data: any): string => {
+        if (!data) {
             throw new Error('Value to encode must be defined');
         }
-        return Encoding.encodeMsgpack(value);
+
+        return Encoding.encodeMsgpack(data);
     };
 
     private static encodeMsgpack = (data: any): string => {
+
         return msgpack5().encode(JSON.stringify(data)).toString('base64');
     };
-
-    public static decode = (value: string): any => {
-        if (!value) {
-            throw new Error('Value to decode must be defined');
-        }
-        return Encoding.decodeMsgpack(value);
-    };
-
-    private static decodeMsgpack = (data: any): any => {
-        const buffer = Buffer.from(data, 'base64');
-        return JSON.parse(msgpack5().decode(buffer));
-    };
-
 }
 
 export function generateSessionId(): string {

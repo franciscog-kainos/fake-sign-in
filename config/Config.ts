@@ -1,9 +1,9 @@
 import { ROOT_URI } from './Paths';
-import * as path from 'path';
-import * as bodyParser from 'body-parser';
-import * as cookieParser from 'cookie-parser';
-import * as express from 'express';
-import * as nunjucks from 'nunjucks';
+import path from 'path';
+import bodyParser from 'body-parser';
+import cookieParser from 'cookie-parser';
+import express from 'express';
+import nunjucks from 'nunjucks';
 
 import { Application } from 'express';
 import * as dotenv from 'dotenv';
